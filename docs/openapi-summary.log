@@ -1,0 +1,38 @@
+﻿======================================================================
+ TP 6 - Swagger / OpenAPI : contrat genere par springdoc-openapi
+ URL : http://localhost:8080/v3/api-docs
+======================================================================
+
+openapi      : 3.0.1
+info.title   : Student Management API
+info.version : 1.0.0
+info.contact : Yasmine Ait Halibi <aithalibi@example.com>
+info.license : Apache 2.0
+servers      : http://localhost:8080 - Serveur de developpement local
+
+--- Endpoints de StudentController (tag "Etudiants") ---
+
+GET     /students/{id}                 Recuperer un etudiant par identifiant         [reponses: 200, 404]
+GET     /students/all                  Recuperer tous les etudiants                  [reponses: 200]
+GET     /students/bornAfter            Etudiants nes apres une annee donnee          [reponses: 200]
+GET     /students/byYear               Nombre d'etudiants par annee de naissance     [reponses: 200]
+GET     /students/count                Nombre total d'etudiants                      [reponses: 200]
+DELETE  /students/delete/{id}          Supprimer un etudiant par identifiant         [reponses: 204, 404]
+POST    /students/save                 Enregistrer un etudiant                       [reponses: 201, 400]
+GET     /students/search               Rechercher des etudiants par nom              [reponses: 200]
+GET     /students/statistics           Statistiques globales                         [reponses: 200]
+
+--- Endpoints Spring Data REST (/api) ---
+
+/api/profile                             GET
+/api/profile/students-data               GET
+/api/students-data                       GET, POST
+/api/students-data/{id}                  GET, PUT, DELETE, PATCH
+/api/students-data/search/existsByNomIgnoreCaseAndPrenomIgnoreCase GET
+/api/students-data/search/findByNomIgnoreCase GET
+/api/students-data/search/findNbrStudentByYear GET
+/api/students-data/search/findStudentById GET
+/api/students-data/search/findStudentsBornAfter GET
+
+Total de chemins documentes : 18
+Schemas dans components     : AbstractJsonSchemaPropertyObject, Item, JsonSchema, Links, RepresentationModelObject, Student, EntityModelStudent, PageMetadata, PagedModelEntityModelStudent, CollectionModelEntityModelStudent, StudentRequestBody, StudentStatistics, Link

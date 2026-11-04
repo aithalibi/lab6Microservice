@@ -1,0 +1,176 @@
+﻿======================================================================
+ TP 6 - Spring Boot et Swagger : tests des endpoints REST (Etape 7)
+ Serveur : student-management-1.0.0.jar sur http://localhost:8080
+ Base    : studentdb (MySQL/MariaDB, table student creee par Hibernate)
+======================================================================
+
+----------------------------------------------------------------------
+POST http://localhost:8080/students/save
+Content-Type: application/json
+
+{"nom":"LACHGAR","prenom":"Mohamed","dateNaissance":"1985-09-01"}
+--> HTTP 201
+Content-Type: application/json
+
+{"id":1,"nom":"LACHGAR","prenom":"Mohamed","dateNaissance":"1985-09-01"}
+
+----------------------------------------------------------------------
+POST http://localhost:8080/students/save
+Content-Type: application/json
+
+{"nom":"SAFI","prenom":"Said","dateNaissance":"1985-12-24"}
+--> HTTP 201
+Content-Type: application/json
+
+{"id":2,"nom":"SAFI","prenom":"Said","dateNaissance":"1985-12-24"}
+
+----------------------------------------------------------------------
+POST http://localhost:8080/students/save
+Content-Type: application/json
+
+{"nom":"RAMI","prenom":"Salima","dateNaissance":"1990-06-15"}
+--> HTTP 201
+Content-Type: application/json
+
+{"id":3,"nom":"RAMI","prenom":"Salima","dateNaissance":"1990-06-15"}
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/all
+--> HTTP 200
+Content-Type: application/json
+
+[{"id":1,"nom":"LACHGAR","prenom":"Mohamed","dateNaissance":"1985-09-01"},{"id":2,"nom":"SAFI","prenom":"Said","dateNaissance":"1985-12-24"},{"id":3,"nom":"RAMI","prenom":"Salima","dateNaissance":"1990-06-15"}]
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/count
+--> HTTP 200
+Content-Type: application/json
+
+3
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/byYear
+--> HTTP 200
+Content-Type: application/json
+
+[[1985,2],[1990,1]]
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/1
+--> HTTP 200
+Content-Type: application/json
+
+{"id":1,"nom":"LACHGAR","prenom":"Mohamed","dateNaissance":"1985-09-01"}
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/search?nom=LACHGAR
+--> HTTP 200
+Content-Type: application/json
+
+[{"id":1,"nom":"LACHGAR","prenom":"Mohamed","dateNaissance":"1985-09-01"}]
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/bornAfter?annee=1985
+--> HTTP 200
+Content-Type: application/json
+
+[{"id":3,"nom":"RAMI","prenom":"Salima","dateNaissance":"1990-06-15"}]
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/statistics
+--> HTTP 200
+Content-Type: application/json
+
+{"total":3,"parAnnee":{"1985":2,"1990":1}}
+
+----------------------------------------------------------------------
+DELETE http://localhost:8080/students/delete/3
+--> HTTP 204
+
+----------------------------------------------------------------------
+DELETE http://localhost:8080/students/delete/999
+--> HTTP 404
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/count
+--> HTTP 200
+Content-Type: application/json
+
+2
+
+----------------------------------------------------------------------
+GET http://localhost:8080/students/999
+--> HTTP 404
+
+{"horodatage":"2026-11-05T00:34:39.690381800","statut":404,"erreur":"Not Found","message":"Aucun etudiant avec l'id 999"}
+
+----------------------------------------------------------------------
+POST http://localhost:8080/students/save
+Content-Type: application/json
+
+{"nom":"","prenom":"Mohamed","dateNaissance":"1985-09-01"}
+--> HTTP 400
+
+{"horodatage":"2026-11-05T00:34:39.698381200","statut":400,"erreur":"Bad Request","message":"Validation echouee","erreurs":{"nom":"Le nom est obligatoire"}}
+
+----------------------------------------------------------------------
+GET http://localhost:8080/api/students-data
+--> HTTP 200
+Content-Type: application/json
+
+{
+  "_embedded" : {
+    "students" : [ {
+      "nom" : "LACHGAR",
+      "prenom" : "Mohamed",
+      "dateNaissance" : "1985-09-01",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/students-data/1"
+        },
+        "student" : {
+          "href" : "http://localhost:8080/api/students-data/1"
+        }
+      }
+    }, {
+      "nom" : "SAFI",
+      "prenom" : "Said",
+      "dateNaissance" : "1985-12-24",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/students-data/2"
+        },
+        "student" : {
+          "href" : "http://localhost:8080/api/students-data/2"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/students-data?page=0&size=20"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/api/profile/students-data"
+    },
+    "search" : {
+      "href" : "http://localhost:8080/api/students-data/search"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 2,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}
+
+
+----------------------------------------------------------------------
+DOCUMENTATION SWAGGER (Etape 9)
+----------------------------------------------------------------------
+GET http://localhost:8080/swagger-ui.html    --> HTTP 200 (redirection vers /swagger-ui/index.html)
+GET http://localhost:8080/v3/api-docs        --> HTTP 200, 14061 caracteres de contrat OpenAPI 3
+     openapi=3.0.1  title='Student Management API'  version=1.0.0
+     chemins documentes : 18
+

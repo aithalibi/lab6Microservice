@@ -1,0 +1,39 @@
+﻿  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.3.5)
+2026-11-05T00:34:08.994+01:00  INFO 21992 --- [student-management] [           main] c.e.s.StudentManagementApplication       : Starting StudentManagementApplication v1.0.0 using Java 17.0.18 with PID 21992 (C:\Users\DELL\Desktop\lab6Microservice\target\student-management-1.0.0.jar started by DELL in C:\Users\DELL\Desktop\lab6Microservice)
+2026-11-05T00:34:09.015+01:00  INFO 21992 --- [student-management] [           main] c.e.s.StudentManagementApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-11-05T00:34:12.216+01:00  INFO 21992 --- [student-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-05T00:34:12.288+01:00  INFO 21992 --- [student-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interface.
+2026-11-05T00:34:13.811+01:00  INFO 21992 --- [student-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-11-05T00:34:13.845+01:00  INFO 21992 --- [student-management] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-05T00:34:13.845+01:00  INFO 21992 --- [student-management] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-11-05T00:34:13.924+01:00  INFO 21992 --- [student-management] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-05T00:34:13.926+01:00  INFO 21992 --- [student-management] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4717 ms
+2026-11-05T00:34:14.402+01:00  INFO 21992 --- [student-management] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-05T00:34:14.634+01:00  INFO 21992 --- [student-management] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-11-05T00:34:14.698+01:00  INFO 21992 --- [student-management] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-05T00:34:15.072+01:00  INFO 21992 --- [student-management] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-05T00:34:15.100+01:00  INFO 21992 --- [student-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-05T00:34:15.286+01:00  INFO 21992 --- [student-management] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48e74764
+2026-11-05T00:34:15.287+01:00  INFO 21992 --- [student-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-05T00:34:15.341+01:00  WARN 21992 --- [student-management] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-11-05T00:34:16.076+01:00  INFO 21992 --- [student-management] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+    create table student (
+        id integer not null auto_increment,
+        date_naissance date,
+        nom varchar(255) not null,
+        prenom varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+2026-11-05T00:34:16.155+01:00  INFO 21992 --- [student-management] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-05T00:34:16.756+01:00  INFO 21992 --- [student-management] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-05T00:34:20.552+01:00  INFO 21992 --- [student-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-11-05T00:34:20.591+01:00  INFO 21992 --- [student-management] [           main] c.e.s.StudentManagementApplication       : Started StudentManagementApplication in 13.002 seconds (process running for 14.673)
+2026-11-05T00:34:31.638+01:00  INFO 21992 --- [student-management] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-05T00:34:31.638+01:00  INFO 21992 --- [student-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-05T00:34:31.639+01:00  INFO 21992 --- [student-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
